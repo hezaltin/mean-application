@@ -15,12 +15,13 @@ export class SignupComponent implements OnInit {
   }
 
   signupForm(form:NgForm){
-    debugger
+    
     console.log(form)
     if(form.invalid){
       return
     }
     else{
+      this.isLoading= true;
       this.authService.createUser(form.value.email,form.value.password)
     }
     
