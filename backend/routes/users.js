@@ -53,7 +53,7 @@ router.post("/login",(req,res,next)=>{
         }
        
         const token = jwt.sign(
-            {email:fetchedUser.email,userId:fetchedUser._id},
+            { email : fetchedUser.email, userId : fetchedUser._id},
             'secret_thi_should_be_longer',
             {expiresIn:'1hr'}
             )   // to create the jwt token
@@ -61,7 +61,8 @@ router.post("/login",(req,res,next)=>{
             res.status(200).json({
                 message:'Authenticate Valid',
                 token :token,
-                expiresIn:3600
+                expiresIn:3600,
+                userId:fetchedUser._id
             })
     })
     .catch(err=>{
